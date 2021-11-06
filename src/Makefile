@@ -1,4 +1,4 @@
-SRCS	=	push_swap_parsing.c lichains_utils.c
+SRCS	=	push_swap_parsing.c lichains_utils.c commands_1.c
 
 MAIN	=	push_swap.c
 

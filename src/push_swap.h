@@ -25,4 +25,9 @@ void    lstadd_front(t_stack **alst, t_stack *new);
 void    lstadd_back(t_stack **alst, t_stack *new);
 int     lstsize(t_stack *lst);
 
+//Commands
+t_stack *sa(t_stack *a);
+t_stack *sb(t_stack *b);
+void    ss(t_stack **a, t_stack **b);
+
 #endif
