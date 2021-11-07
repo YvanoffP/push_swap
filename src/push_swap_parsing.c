@@ -1,71 +1,67 @@
 #include "push_swap.h"
 
-void    print_stack(t_stack     *stack)
-{
-    while (stack != NULL)
-    {
-		printf("%i\n", stack->nb);
-        stack = stack->next;
-    }
-}
-
 t_stack	*parsing_string(char **argv)
 {
-        char    **args_tab;
-        int     nb_args;
-        int     index;
-        t_stack	*stack;
-		t_stack	*tmp;
+    t_stack *a;
+    t_node  *temp;
+    int     i;
+    char    **tmp;
 
-        nb_args = 0;
-        index = 0;
-        args_tab = ft_split(argv[1], ' ');
-        if (!args_tab)
-			return (0);
-		while (args_tab[nb_args])
-			nb_args++;
-		stack = lstnew(ft_atoi(args_tab[index++]));
-		while (index < nb_args)
-		{
-			tmp = lstnew(ft_atoi(args_tab[index++]));
-			lstadd_back(&stack, tmp);
-		}
-		return(stack);
+    a = new_stack();
+    i = 0;
+    tmp = ft_split(argv[1], ' ');
+    if (!tmp)
+		return (0);
+    while (tmp[i])
+        i++;
+    i -= 1;
+	while (i >= 0)
+	{
+		temp = new_node(ft_atoi(tmp[i]));
+		if (a->front == NULL)
+			a->tail = temp;
+		else
+			temp->next = a->front;
+		a->front = temp;
+		i--;
+	}
+	return (a);
 }
 
 t_stack	*parsing_multi_args(char **argv)
 {
-        int     nb_args;
-        int     index_args;
-        t_stack	*stack;
-		t_stack	*tmp;
+	t_stack *a;
+	t_node  *temp;
+	int     i;
 
-        nb_args = 0;
-        index_args = 1;
-        while (argv[nb_args])
-			nb_args++;
-		stack = lstnew(ft_atoi(argv[index_args++]));
-        while (index_args < nb_args)
-		{
-			tmp = lstnew(ft_atoi(argv[index_args++]));
-			lstadd_back(&stack, tmp);
-		}
-        return (stack);
+    a = new_stack();
+	i = 1;
+	while (argv[i])
+		i++;
+	i -= 1;
+	while (i > 0)
+	{
+		temp = new_node(ft_atoi(argv[i]));
+		if (a->front == NULL)
+			a->tail = temp;
+		else
+			temp->next = a->front;
+		a->front = temp;
+		i--;
+	}
+	return (a);
 }
 
-t_stack	*parsing_args(int arg_count, char **argvals)
+t_stack	*parsing_args(int argc, char **argv)
 {
-        t_stack	*a;
-
-        if (arg_count == 2)
-			a = parsing_string(argvals);
-        else if (arg_count > 2)
-			a = parsing_multi_args(argvals);
-        else
-		{
-			write (1, "error", 5);
-			a = NULL;
-			return (a);
-		}
-        return (a);
+	if (argc == 2)
+		return (parsing_string(argv));
+	else if (argc > 2)
+		return (parsing_multi_args(argv));
+	else
+	{
+		write(1, "error\n", 6);
+		return (0);
+	}
+	return (0);
 }

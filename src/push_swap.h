@@ -6,10 +6,17 @@
 # include <unistd.h>
 # include "../libft/libft.h"
 
+typedef struct  s_node
+{
+        int             data;
+        struct s_node   *prev;
+        struct s_node   *next;
+}               t_node;
+
 typedef struct  s_stack
 {
-        int             nb;
-        struct s_stack  *next;
+    t_node  *front;
+    t_node  *tail;
 }               t_stack;
 
 // Parsing
@@ -18,16 +25,18 @@ t_stack *parsing_multi_args(char **argv);
 t_stack *parsing_string(char **argv);
 
 // List chain utils
-void    print_stack(t_stack     *stack);
-t_stack  *lstlast(t_stack *lst);
-t_stack  *lstnew(int content);
-void    lstadd_front(t_stack **alst, t_stack *new);
-void    lstadd_back(t_stack **alst, t_stack *new);
-int     lstsize(t_stack *lst);
+t_node  *new_node(int data);
+t_stack *new_stack(void);
 
 //Commands
-t_stack *sa(t_stack *a);
-t_stack *sb(t_stack *b);
-void    ss(t_stack **a, t_stack **b);
+void    sa(t_stack *a);
+void    sb(t_stack *b);
+void    ss(t_stack *a, t_stack *b);
+void    pa(t_stack *b, t_stack *a);
+void    pb(t_stack *a, t_stack *b);
+void    ra(t_stack *a);
+void    rb(t_stack *b);
+void    rra(t_stack *a);
+void    rrb(t_stack *b);
 
 #endif
