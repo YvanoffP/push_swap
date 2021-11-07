@@ -21,7 +21,10 @@ t_stack	*parsing_string(char **argv)
 		if (a->front == NULL)
 			a->tail = temp;
 		else
+		{
 			temp->next = a->front;
+			a->front->prev = a->front;
+		}
 		a->front = temp;
 		i--;
 	}
@@ -45,7 +48,10 @@ t_stack	*parsing_multi_args(char **argv)
 		if (a->front == NULL)
 			a->tail = temp;
 		else
+		{
 			temp->next = a->front;
+			a->front->prev = a->front;
+		}
 		a->front = temp;
 		i--;
 	}
