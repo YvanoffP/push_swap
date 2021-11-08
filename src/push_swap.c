@@ -9,7 +9,7 @@ int main(int argc, char **argv)
 	b = new_stack();
 	display(a, b);
 
-	pb(a, b);
+	sa(a);
 	display(a, b);
 
 	pb(a, b);
@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 	pb(a, b);
 	display(a, b);
 
-	pb(a, b);
+	sb(b);
 	display(a, b);
 
 

@@ -2,13 +2,16 @@
 
 void	sa(t_stack *a)
 {
-	t_node	*swp;
+	int	tmp;
 
-	if (a->front && a->front->next)
+	tmp = 0;
+	if (a->front == a->tail)
+		return ;
+	else if (a->front && a->front->next)
 	{
-		swp = new_node(a->front->next->data);
-		a->front->next->data = a->front->data;
-		a->front->data = swp->data;
+		tmp = a->front->data;
+		a->front->data = a->front->next->data;
+		a->front->next->data = tmp;
 	}
 	else
 		write(1, "sa failed\n", 11);
@@ -16,13 +19,16 @@ void	sa(t_stack *a)
 
 void	sb(t_stack *b)
 {
-	t_node	*swp;
+	int	tmp;
 
-	if (b->front && b->front->next)
+	tmp = 0;
+	if (b->front == b->tail)
+		return ;
+	else if (b->front && b->front->next)
 	{
-		swp = new_node(b->front->next->data);
-		b->front->next->data = b->front->data;
-		b->front->data = swp->data;
+		tmp = b->front->data;
+		b->front->data = b->front->next->data;
+		b->front->next->data = tmp;
 	}
 	else
 		write(1, "sb failed\n", 11);
