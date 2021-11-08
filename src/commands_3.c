@@ -37,8 +37,8 @@ void    rrr(t_stack *a, t_stack *b)
 {
 	if (a->front != a->tail && b->front != b->tail)
 	{
-		ra(a);
-		rb(b);
+		rra(a);
+		rrb(b);
 	}
 	else
 		write(1, "Reverse rotate both failed\n", 27);

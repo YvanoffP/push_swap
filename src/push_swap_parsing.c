@@ -1,5 +1,18 @@
 #include "push_swap.h"
 
+void	clear(char **array)
+{
+	int	i;
+	i = 0;
+
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
+
 t_stack	*parsing_string(char **argv)
 {
     t_stack *a;
@@ -28,6 +41,7 @@ t_stack	*parsing_string(char **argv)
 		a->front = temp;
 		i--;
 	}
+	clear(tmp);
 	return (a);
 }
 
@@ -49,8 +63,8 @@ t_stack	*parsing_multi_args(char **argv)
 			a->tail = temp;
 		else
 		{
+			a->front->prev = temp;
 			temp->next = a->front;
-			a->front->prev = a->front;
 		}
 		a->front = temp;
 		i--;

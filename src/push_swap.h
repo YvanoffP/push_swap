@@ -23,8 +23,10 @@ typedef struct  s_stack
 t_stack *parsing_args(int argc, char **argv);
 t_stack *parsing_multi_args(char **argv);
 t_stack *parsing_string(char **argv);
+void    clear(char **array);
 
 // List chain utils
+void    display(t_stack *a, t_stack *b);
 t_node  *new_node(int data);
 t_stack *new_stack(void);
 
@@ -36,7 +38,9 @@ void    pa(t_stack *b, t_stack *a);
 void    pb(t_stack *a, t_stack *b);
 void    ra(t_stack *a);
 void    rb(t_stack *b);
+void    rr(t_stack *a, t_stack *b);
 void    rra(t_stack *a);
 void    rrb(t_stack *b);
+void    rrr(t_stack *a, t_stack *b);
 
 #endif
