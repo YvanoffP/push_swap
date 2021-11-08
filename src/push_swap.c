@@ -6,7 +6,7 @@ int main(int argc, char **argv)
 	t_stack	*b;
 
 	a = parsing_args(argc, argv);
-	b = malloc(sizeof(t_stack));
+	b = new_stack();
 	display(a, b);
 
 	pb(a, b);
@@ -18,7 +18,9 @@ int main(int argc, char **argv)
 	pb(a, b);
 	display(a, b);
 
-	printf("%i\n", a->front->data);
+	pb(a, b);
+	display(a, b);
+
 
 	free(a);
 	free(b);

@@ -36,7 +36,7 @@ t_stack	*parsing_string(char **argv)
 		else
 		{
 			temp->next = a->front;
-			a->front->prev = a->front;
+			a->front->prev = temp;
 		}
 		a->front = temp;
 		i--;
