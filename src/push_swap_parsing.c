@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	clear(char **array)
+static void	clear(char **array)
 {
 	int	i;
 	i = 0;
@@ -13,6 +13,16 @@ void	clear(char **array)
 	free(array);
 }
 
+static int nb_args(char **arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+		i++;
+	return (i - 1);
+}
+
 t_stack	*parsing_string(char **argv)
 {
     t_stack *a;
@@ -21,13 +31,10 @@ t_stack	*parsing_string(char **argv)
     char    **tmp;
 
     a = new_stack();
-    i = 0;
     tmp = ft_split(argv[1], ' ');
+    i = nb_args(tmp);
     if (!tmp)
 		return (0);
-    while (tmp[i])
-        i++;
-    i -= 1;
 	while (i >= 0)
 	{
 		temp = new_node(ft_atoi(tmp[i]));

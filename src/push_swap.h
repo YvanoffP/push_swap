@@ -23,7 +23,6 @@ typedef struct  s_stack
 t_stack *parsing_args(int argc, char **argv);
 t_stack *parsing_multi_args(char **argv);
 t_stack *parsing_string(char **argv);
-void    clear(char **array);
 
 // List chain utils
 void    display(t_stack *a, t_stack *b);
