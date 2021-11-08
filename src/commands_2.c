@@ -2,14 +2,14 @@
 
 void	ra(t_stack *a)
 {
-	int	tmp;
-
-	tmp = 0;
 	if (a->front->data != a->tail->data && a->front != NULL && a->tail != NULL)
 	{
-		tmp = a->front->data;
-		a->front->data = a->tail->data;
-		a->tail->data = tmp;
+		a->front->prev = a->tail;
+		a->tail->next = a->front;
+		a->front = a->front->next;
+		a->front->prev->next = NULL;
+		a->front->prev = NULL;
+		a->tail = a->tail->next;
 	}
 	else
 		write(1, "Rotate a failed\n", 17);
@@ -17,14 +17,14 @@ void	ra(t_stack *a)
 
 void	rb(t_stack *b)
 {
-	int	tmp;
-
-	tmp = 0;
 	if (b->front->data != b->tail->data && b->front != NULL && b->tail != NULL)
 	{
-		tmp = b->front->data;
-		b->front->data = b->tail->data;
-		b->tail->data = tmp;
+		b->front->prev = b->tail;
+		b->tail->next = b->front;
+		b->front = b->front->next;
+		b->front->prev->next = NULL;
+		b->front->prev = NULL;
+		b->tail = b->tail->next;
 	}
 	else
 		write(1, "Rotate b failed\n", 17);
