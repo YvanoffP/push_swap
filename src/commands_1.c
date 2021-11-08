@@ -42,36 +42,60 @@ void	ss(t_stack *a, t_stack *b)
 
 void	pa(t_stack *b, t_stack *a)
 {
-	t_node	*node_push;
-
-	if (b->front)
+	if (b->front == NULL)
+		return ;
+	if (a->front == NULL && a->tail == NULL)
 	{
-		node_push = new_node(b->front->data);
-		if (a->front == NULL)
-			a->tail = node_push;
-		else if (a->front)
-			node_push->next = a->front;
-		a->front = node_push;
+		a->front = b->front;
+		a->tail = b->front;
 		b->front = b->front->next;
+		b->front->prev = NULL;
+		a->front->next = NULL;
 	}
-	else
-		write(1, "Push failed\n", 13);
+	else if (a->front && a->tail && b->front->next)
+	{
+		a->front->prev = b->front;
+		b->front = b->front->next;
+		b->front->prev = NULL;
+		a->front->prev->next = a->front;
+		a->front = a->front->prev;
+	}
+	else if (!b->front->next)
+	{
+		a->front->prev = b->front;
+		b->front->next = a->front;
+		a->front = a->front->prev;
+		b->front = NULL;
+		b->tail = NULL;
+	}
 }
 
 void	pb(t_stack *a, t_stack *b)
 {
-	t_node	*node_push;
-
-	if (a->front)
+	if (a->front == NULL)
+		return ;
+	if (b->front == NULL && b->tail == NULL)
 	{
-		node_push = new_node(a->front->data);
-		if (b->front == NULL)
-			b->tail = node_push;
-		else if (b->front)
-			node_push->next = b->front;
-		b->front = node_push;
+		b->front = a->front;
+		b->tail = a->front;
 		a->front = a->front->next;
+		a->front->prev = NULL;
+		b->front->next = NULL;
 	}
-	else
-		write(1, "Push failed\n", 13);
+	else if (b->front && b->tail && a->front->next)
+	{
+		b->front->prev = a->front;
+		a->front = a->front->next;
+		a->front->prev = NULL;
+		b->front->prev->next = b->front;
+		b->front = b->front->prev;
+	}
+	else if (!a->front->next)
+	{
+		b->front->prev = a->front;
+		a->front->next = b->front;
+		b->front = b->front->prev;
+		a->front = NULL;
+		a->tail = NULL;
+	}
 }
