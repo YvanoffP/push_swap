@@ -2,16 +2,14 @@
 
 void	rra(t_stack *a)
 {
-	t_node  *tmp;
-
-	if (a->front != a->tail)
+	if (a->front != a->tail && a->front != NULL && a->tail != NULL)
 	{
-		tmp = new_node(a->tail->data);
-		tmp->next = a->front;
+		a->tail->next = a->front;
+		a->front->prev = a->tail;
 		a->tail = a->tail->prev;
+		a->tail->next->prev = NULL;
 		a->tail->next = NULL;
-		a->front->prev = tmp;
-		a->front = tmp;
+		a->front = a->front->prev;
 	}
 	else
 		write(1, "Reverse rotate a failed\n", 24);
@@ -19,16 +17,14 @@ void	rra(t_stack *a)
 
 void	rrb(t_stack *b)
 {
-	t_node  *tmp;
-
-	if (b->front != b->tail)
+	if (b->front != b->tail && b->front != NULL && b->tail != NULL)
 	{
-		tmp = new_node(b->tail->data);
-		tmp->next = b->front;
+		b->tail->next = b->front;
+		b->front->prev = b->tail;
 		b->tail = b->tail->prev;
+		b->tail->next->prev = NULL;
 		b->tail->next = NULL;
-		b->front->prev = tmp;
-		b->front = tmp;
+		b->front = b->front->prev;
 	}
 	else
 		write(1, "Reverse rotate b failed\n", 24);

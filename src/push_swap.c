@@ -18,10 +18,10 @@ int main(int argc, char **argv)
 	pb(a, b);
 	display(a, b);
 
-	rb(b);
+	rrb(b);
 	display(a, b);
 
-	rr(a, b);
+	rrr(a, b);
 	display(a, b);
 
 	free(a);
