@@ -4,24 +4,14 @@ int main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
+	int	i;
 
+	i = 0;
 	a = parsing_args(argc, argv);
 	b = new_stack();
-	display(a, b);
 
-	ra(a);
-	display(a, b);
-
-	pb(a, b);
-	display(a, b);
-
-	pb(a, b);
-	display(a, b);
-
-	rrb(b);
-	display(a, b);
-
-	rrr(a, b);
+	i = sort_checker(a);
+	printf("List sorted = %i\n", i);
 	display(a, b);
 
 	free(a);

@@ -29,6 +29,9 @@ void    display(t_stack *a, t_stack *b);
 t_node  *new_node(int data);
 t_stack *new_stack(void);
 
+// Solver
+int sort_checker(t_stack *a);
+
 //Commands
 void    sa(t_stack *a);
 void    sb(t_stack *b);

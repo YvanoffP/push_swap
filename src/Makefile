@@ -1,4 +1,5 @@
-SRCS	=	push_swap_parsing.c commands_1.c commands_2.c commands_3.c list_utils.c
+SRCS	=	push_swap_parsing.c commands_1.c commands_2.c commands_3.c list_utils.c \
+			solver.c
 
 MAIN	=	push_swap.c
 
