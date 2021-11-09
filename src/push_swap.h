@@ -23,6 +23,10 @@ typedef struct  s_stack
 t_stack *parsing_args(int argc, char **argv);
 t_stack *parsing_multi_args(char **argv);
 t_stack *parsing_string(char **argv);
+void    clear(char **array);
+void    check_for_dup(t_stack *a);
+int     nb_args(char **arg);
+int     more_than_one(t_node *check, int data, int count);
 
 // List chain utils
 void    display(t_stack *a, t_stack *b);
@@ -30,11 +34,11 @@ t_node  *new_node(int data);
 t_stack *new_stack(void);
 
 // Solver
-void    solver(t_stack *a, t_stack *b);
 int     is_empty(t_stack *b);
 int     is_sorted(t_stack *a);
 int     is_rev_sorted(t_stack *b);
 int     guit_recursive(int data, int count, t_node *current_node);
+void    solver(t_stack *a, t_stack *b);
 
 //Commands
 void    sa(t_stack *a);

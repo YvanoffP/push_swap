@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	solving_a(t_stack *a, t_stack *b)
+static void	solving_a(t_stack *a, t_stack *b)
 {
 
 	if (a->front->next != NULL)
@@ -24,7 +24,7 @@ void	solving_a(t_stack *a, t_stack *b)
 		pb(a, b);
 }
 
-void	sort_b(t_stack *b)
+static void	sort_b(t_stack *b)
 {
 	int	search_pos;
 	int	count;

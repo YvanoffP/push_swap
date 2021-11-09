@@ -1,28 +1,5 @@
 #include "push_swap.h"
 
-static void	clear(char **array)
-{
-	int	i;
-	i = 0;
-
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-}
-
-static int nb_args(char **arg)
-{
-	int	i;
-
-	i = 0;
-	while (arg[i])
-		i++;
-	return (i - 1);
-}
-
 t_stack	*parsing_string(char **argv)
 {
     t_stack *a;
