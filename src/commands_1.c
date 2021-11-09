@@ -12,9 +12,10 @@ void	sa(t_stack *a)
 		tmp = a->front->data;
 		a->front->data = a->front->next->data;
 		a->front->next->data = tmp;
+		write(1, "sa\n", 3);
 	}
 	else
-		write(1, "sa failed\n", 11);
+		write(1, "sa failed\n", 10);
 }
 
 void	sb(t_stack *b)
@@ -29,9 +30,10 @@ void	sb(t_stack *b)
 		tmp = b->front->data;
 		b->front->data = b->front->next->data;
 		b->front->next->data = tmp;
+		write(1, "sb\n", 3);
 	}
 	else
-		write(1, "sb failed\n", 11);
+		write(1, "sb failed\n", 10);
 }
 
 void	ss(t_stack *a, t_stack *b)
@@ -43,7 +45,7 @@ void	ss(t_stack *a, t_stack *b)
 		sb(b);
 	}
 	else
-		write(1, "Swap failed\n", 13);
+		write(1, "Swap failed\n", 12);
 }
 
 void	pa(t_stack *b, t_stack *a)
@@ -71,9 +73,9 @@ void	pa(t_stack *b, t_stack *a)
 		a->front->prev = b->front;
 		b->front->next = a->front;
 		a->front = a->front->prev;
-		b->front = NULL;
-		b->tail = NULL;
+		set_front_tail(b);
 	}
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack *a, t_stack *b)
@@ -101,7 +103,7 @@ void	pb(t_stack *a, t_stack *b)
 		b->front->prev = a->front;
 		a->front->next = b->front;
 		b->front = b->front->prev;
-		a->front = NULL;
-		a->tail = NULL;
+		set_front_tail(a);
 	}
+	write(1, "pb\n", 3);
 }
