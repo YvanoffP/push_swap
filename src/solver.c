@@ -29,7 +29,7 @@ static void	sort_b(t_stack *b)
 	int	search_pos;
 	int	count;
 
-	if (!is_rev_sorted(b))
+	if (!is_rev_sorted(b) && b->front != NULL && b->tail != NULL)
 	{
 		if (b->front->data < b->tail->data)
 			rb(b);
@@ -53,6 +53,7 @@ static void	empty_b_in_a(t_stack *a, t_stack *b)
 	while (!is_empty(b))
 		pa(b, a);
 }
+
 void	solver(t_stack *a, t_stack *b)
 {
 	while (!is_sorted(a))

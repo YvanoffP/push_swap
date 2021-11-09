@@ -7,9 +7,9 @@ int main(int argc, char **argv)
 
 	a = parsing_args(argc, argv);
 	b = new_stack();
-
 	check_for_dup(a);
-	//solver(a, b);
+
+	solver(a, b);
 	display(a, b);
 
 	free(a);
