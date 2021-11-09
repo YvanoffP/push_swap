@@ -30,9 +30,10 @@ t_node  *new_node(int data);
 t_stack *new_stack(void);
 
 // Solver
-int     is_sorted(t_stack *a);
 void    solver(t_stack *a, t_stack *b);
 int     is_empty(t_stack *b);
+int     is_sorted(t_stack *a);
+int     is_rev_sorted(t_stack *b);
 int     guit_recursive(int data, int count, t_node *current_node);
 
 //Commands
