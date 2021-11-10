@@ -7,8 +7,6 @@ SRCS			=	push_swap_parsing.c commands_1.c commands_2.c commands_3.c list_utils.c
 
 HEADER_PS		=	src/push_swap.h
 
-OBJS_PS			=	$(addprefix src/, $(SRCS_PS:.c=.o))
-
 CC				= 	gcc $(CFLAGS)
 
 RM				= 	rm -f
@@ -29,11 +27,11 @@ libft:
 				make -C $(LIBFT_DIR) all
 
 clean:
-				$(RM) $(OBJS_LIB) $(OBJS_PRINT)
+				$(RM) $(NAME)
 				make -C $(LIBFT_DIR) clean
 
 fclean:			clean
 				$(RM) $(NAME)
-				make -C $(LIBFT_DIR) fclean
+				$(RM) libft/libft.a
 
 re:				fclean $(NAME)
