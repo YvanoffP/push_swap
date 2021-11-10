@@ -1,24 +1,29 @@
 LIBFT_DIR		=	libft/
 
-SRCS_PRINT		=	push_swap.c
+PS_SRCS			=	$(addprefix src/, $(SRCS))
 
-OBJS_PRINT		=	$(addprefix src/, $(SRCS_PRINT:.c=.o))
+SRCS			=	push_swap_parsing.c commands_1.c commands_2.c commands_3.c list_utils.c \
+					solver.c solver_utils.c push_swap_parsing_utils.c push_swap.c
 
-CC				= gcc $(CFLAGS)
+HEADER_PS		=	src/push_swap.h
 
-RM				= rm -f
+OBJS_PS			=	$(addprefix src/, $(SRCS_PS:.c=.o))
 
-CFLAGS			= -Wall -Wextra -Werror
+CC				= 	gcc $(CFLAGS)
 
-NAME			= push_swap.a
+RM				= 	rm -f
+
+CFLAGS			= 	-Wall -Wextra -Werror
+
+NAME			= 	push_swap
 
 .PHONY:			libft all clean fclean re bonus
 
 all:			$(NAME)
 
 $(NAME):		libft $(OBJS_PRINT)
-				ar rcs $(NAME) $(LIBFT_DIR)/*.o $(OBJS_PRINT)
-				@echo "Libft is done!"
+				$(CC) $(PS_SRCS) $(HEADER_PS) $(LIBFT_DIR)libft.a -o $(NAME)
+				@echo "push_swap has been compiled !"
 
 libft:
 				make -C $(LIBFT_DIR) all
