@@ -46,6 +46,7 @@ t_stack *new_stack(void);
 // Solver
 void    solver(t_stack *a, t_stack *b);
 void    solver_short(t_stack *a);
+void    solver_med(t_stack *a, t_stack *b);
 void    solver_long(t_stack *a, t_stack *b);
 
 // Solver utils
@@ -57,6 +58,9 @@ int     get_max_data(t_node *node);
 
 // Solver utils 2
 int     get_median_data(t_stack *stack, int median, int max, int nb_loop);
+void    move_to(t_stack *a, t_stack *b, int median);
+int     guit_recursive(int data, int count, t_node *current_node);
+void    sort_b(t_stack *b, t_stack *a);
 
 //Commands
 void    sa(t_stack *a);
