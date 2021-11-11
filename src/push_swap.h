@@ -28,6 +28,7 @@ void    check_for_dup(t_stack *a);
 int     nb_args(char **arg);
 int     more_than_one(t_node *check, int data, int count);
 int     check_error_args(char **argv);
+int     only_whitespace(char **argv);
 
 // List chain utils
 void    display(t_stack *a, t_stack *b);

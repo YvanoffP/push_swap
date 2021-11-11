@@ -7,6 +7,8 @@ int	check_error_args(char **argv)
 
 	j = 0;
 	i = 1;
+	if (only_whitespace(argv))
+		return (0);
 	while (argv[i])
 	{
 		j = 0;

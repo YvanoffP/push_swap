@@ -1,5 +1,17 @@
 #include "push_swap.h"
 
+int	only_whitespace(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[1][i] == ' ')
+		i++;
+	if (argv[1][i] == '\0')
+		return (1);
+	return (0);
+}
+
 t_stack	*parsing_string(char **argv)
 {
     t_stack *a;
@@ -77,9 +89,6 @@ t_stack	*parsing_args(int argc, char **argv)
 		return (parsing_multi_args(argv));
 	}
 	else
-	{
-		write(1, "Error\n", 6);
 		exit(0);
-	}
 	return (0);
 }
