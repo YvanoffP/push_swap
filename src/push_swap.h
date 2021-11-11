@@ -62,6 +62,9 @@ void    move_to(t_stack *a, t_stack *b, int median);
 int     guit_recursive(int data, int count, t_node *current_node);
 void    sort_b(t_stack *b, t_stack *a);
 
+// Solver utils 3
+int     get_pos_data(t_node *node, int min_data);
+
 //Commands
 void    sa(t_stack *a);
 void    sb(t_stack *b);
