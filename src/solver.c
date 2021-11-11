@@ -50,8 +50,6 @@ void	solver_med(t_stack *a, t_stack *b)
 		while (!is_empty(b))
 			pa(b, a);
 	}
-
-	// TOUT CE QUI EST PLUS PETIT QUE MEDIAN VA DANS B
 }
 
 void	solver(t_stack *a, t_stack *b)
@@ -73,6 +71,4 @@ void	solver(t_stack *a, t_stack *b)
 		solver_med(a, b);
 	else if (list_size(a->front) > 6)
 		solver_long(a,b);
-	else
-		(void)b;
 }
