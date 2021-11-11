@@ -36,12 +36,19 @@ int     list_size(t_node *current_node);
 t_node  *new_node(int data);
 t_stack *new_stack(void);
 
+// exSolver
+//int     is_empty(t_stack *b);
+//int     is_sorted(t_stack *a);
+//int     is_rev_sorted(t_stack *b);
+//int     guit_recursive(int data, int count, t_node *current_node);
+//void    solver(t_stack *a, t_stack *b);
+
 // Solver
-int     is_empty(t_stack *b);
+void    solver(t_stack *a, t_stack *b);
+void    solver_short(t_stack *a);
 int     is_sorted(t_stack *a);
 int     is_rev_sorted(t_stack *b);
-int     guit_recursive(int data, int count, t_node *current_node);
-void    solver(t_stack *a, t_stack *b);
+int     is_empty(t_stack *b);
 
 //Commands
 void    sa(t_stack *a);

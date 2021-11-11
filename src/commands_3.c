@@ -10,10 +10,8 @@ void	rra(t_stack *a)
 		a->tail->next->prev = NULL;
 		a->tail->next = NULL;
 		a->front = a->front->prev;
+		write(1, "rra\n", 4);
 	}
-	else
-		write(1, "Reverse rotate a failed\n", 24);
-	write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack *b)
@@ -26,10 +24,8 @@ void	rrb(t_stack *b)
 		b->tail->next->prev = NULL;
 		b->tail->next = NULL;
 		b->front = b->front->prev;
+		write(1, "rrb\n", 4);
 	}
-	else
-		write(1, "Reverse rotate b failed\n", 24);
-	write(1, "rrb\n", 4);
 }
 void    rrr(t_stack *a, t_stack *b)
 {
