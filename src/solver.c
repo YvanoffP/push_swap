@@ -11,18 +11,23 @@ void    solver_short(t_stack *a)
 			sa(a);
 			rra(a);
 		}
-		else if (a->front->data > a->front->next->data && a->front->data > a->tail->data)
+		else if (a->front->data > a->front->next->data &&
+					a->front->data > a->tail->data)
 		{
 			ra(a);
 			if (!is_sorted(a))
 				sa(a);
 		}
-		else if (a->front->data < a->front->next->data && a->front->data < a->tail->data)
+		else if (a->front->data < a->front->next->data &&
+					a->front->data < a->tail->data)
 		{
 			ra(a);
 			sa(a);
 			rra(a);
 		}
+		else if (a->front->data > a->front->next->data &&
+					a->front->data < a->tail->data)
+			sa(a);
 	}
 }
 
@@ -34,7 +39,7 @@ void	solver(t_stack *a, t_stack *b)
 			pb(a, b);
 		while (!is_empty(b))
 		{
-			if (list_size(b->front) <= 1)
+			if (list_size(b->front) != 1)
 				rrb(b);
 			pa(b, a);
 		}
