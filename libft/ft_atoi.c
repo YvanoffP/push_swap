@@ -23,20 +23,17 @@ static int	ft_iswspace(char c)
 
 int	ft_atoi(const char *str)
 {
-	int	res;
-	int	neg;
-	int	count;
+	long int	res;
+	long int	neg;
+	long int	count;
 
 	res = 0;
 	neg = 1;
 	count = 0;
 	while (ft_iswspace(str[count]))
 		count++;
-	if (str[count] == '-')
-	{
+	if (str[count++] == '-')
 		neg = -1;
-		count++;
-	}
 	else if (str[count] == '+')
 		count++;
 	while (str[count] >= '0' && str[count] <= '9')
@@ -44,5 +41,11 @@ int	ft_atoi(const char *str)
 		res = (res * 10) + (str[count] - '0');
 		count++;
 	}
-	return (res * neg);
+	res *= neg;
+	if (res > 2147483647 || res < -2147483648)
+	{
+		write(1, "Error\n", 6);
+		exit(0);
+	}
+	return ((int)res);
 }
