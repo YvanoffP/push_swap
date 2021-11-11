@@ -16,6 +16,8 @@ static void	solving_a(t_stack *a, t_stack *b)
 		{
 			if (a->front->data > a->tail->data)
 				rra(a);
+			else if (is_sorted(a) && is_empty(b))
+				return ;
 			else
 				pb(a, b);
 		}
@@ -61,6 +63,8 @@ void	solver(t_stack *a, t_stack *b)
 		while (!is_empty(a))
 		{
 			solving_a(a, b);
+			if (is_sorted(a) && is_empty(b))
+				break ;
 			sort_b(b);
 		}
 		empty_b_in_a(a, b);

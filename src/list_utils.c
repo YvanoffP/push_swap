@@ -52,3 +52,16 @@ t_stack	*new_stack(void)
 	new->tail = NULL;
 	return (new);
 }
+
+int list_size(t_node *current_node)
+{
+	int     count;
+
+	count = 0;
+	while (current_node != NULL)
+	{
+		count++;
+		current_node = current_node->next;
+	}
+	return (count);
+}

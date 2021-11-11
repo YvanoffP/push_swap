@@ -59,13 +59,27 @@ t_stack	*parsing_multi_args(char **argv)
 t_stack	*parsing_args(int argc, char **argv)
 {
 	if (argc == 2)
+	{
+		if (!check_error_args(argv))
+		{
+			write(1, "Error\n", 6);
+			exit(0);
+		}
 		return (parsing_string(argv));
+	}
 	else if (argc > 2)
+	{
+		if (!check_error_args(argv))
+		{
+			write(1, "Error\n", 6);
+			exit(0);
+		}
 		return (parsing_multi_args(argv));
+	}
 	else
 	{
-		write(1, "error\n", 6);
-		return (0);
+		write(1, "Error\n", 6);
+		exit(0);
 	}
 	return (0);
 }

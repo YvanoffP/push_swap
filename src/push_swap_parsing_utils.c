@@ -1,6 +1,33 @@
 #include "push_swap.h"
 
-int     more_than_one(t_node *check, int data, int count)
+int	check_error_args(char **argv)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	i = 1;
+	while (argv[i])
+	{
+		j = 0;
+		while (ft_isdigit(argv[i][j]) || argv[i][j] == ' ' || argv[i][j] == '-')
+		{
+			if (argv[i][j] == '-' && ft_isdigit(argv[i][j + 1]))
+				j++;
+			else if (!ft_isdigit(argv[i][j]) && argv[i][j] != ' ')
+				return (0);
+			j++;
+			if (argv[i][j] == '-' && ft_isdigit(argv[i][j - 1]))
+				return (0);
+		}
+		if (!ft_isdigit(argv[i][j]) && argv[i][j] != '\0')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int more_than_one(t_node *check, int data, int count)
 {
 	if (check->data == data && check->next != NULL)
 		return (more_than_one(check->next, data, count + 1));
