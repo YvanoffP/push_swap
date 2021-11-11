@@ -46,9 +46,17 @@ t_stack *new_stack(void);
 // Solver
 void    solver(t_stack *a, t_stack *b);
 void    solver_short(t_stack *a);
+void    solver_long(t_stack *a, t_stack *b);
+
+// Solver utils
 int     is_sorted(t_stack *a);
 int     is_rev_sorted(t_stack *b);
 int     is_empty(t_stack *b);
+int     get_min_data(t_node *node);
+int     get_max_data(t_node *node);
+
+// Solver utils 2
+int     get_median_data(t_stack *stack, int median, int max, int nb_loop);
 
 //Commands
 void    sa(t_stack *a);
