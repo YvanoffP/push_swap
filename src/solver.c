@@ -67,7 +67,7 @@ void	solver_long(t_stack *a, t_stack *b)
 		data.data_2 = get_next_min_data(a->front, data.data_1);
 		data.pos_1 = get_pos_data(a->front, data.data_1) + 1;
 		data.pos_2 = get_pos_data(a->front, data.data_2) + 1;
-		if (data.pos_1 > size / 2)
+		if (data.pos_1 >= size / 2)
 			while (a->front->data != data.data_1)
 			{
 				if (a->front->data == data.data_2)
@@ -96,6 +96,8 @@ void	solver_long(t_stack *a, t_stack *b)
 
 void	solver(t_stack *a, t_stack *b)
 {
+	if (is_sorted(a))
+		return ;
 	if (is_rev_sorted(a) && list_size(a->front) > 3)
 	{
 		while (!is_empty(a))

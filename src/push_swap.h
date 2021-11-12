@@ -27,11 +27,6 @@ typedef struct  s_data_push
     int data_2;
     int pos_2;
     int flag_2;
-    int data_3;
-    int pos_3;
-    int flag_3;
-    int lower_pos;
-    int higher_pos;
 }               t_data_push;
 
 // Parsing
