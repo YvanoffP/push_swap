@@ -19,6 +19,21 @@ typedef struct  s_stack
     t_node  *tail;
 }               t_stack;
 
+typedef struct  s_data_push
+{
+    int data_1;
+    int pos_1;
+    int flag_1;
+    int data_2;
+    int pos_2;
+    int flag_2;
+    int data_3;
+    int pos_3;
+    int flag_3;
+    int lower_pos;
+    int higher_pos;
+}               t_data_push;
+
 // Parsing
 t_stack *parsing_args(int argc, char **argv);
 t_stack *parsing_multi_args(char **argv);
@@ -31,10 +46,11 @@ int     check_error_args(char **argv);
 int     only_whitespace(char **argv);
 
 // List chain utils
-void    display(t_stack *a, t_stack *b);
-int     list_size(t_node *current_node);
-t_node  *new_node(int data);
-t_stack *new_stack(void);
+void        display(t_stack *a, t_stack *b);
+int         list_size(t_node *current_node);
+t_node      *new_node(int data);
+t_stack     *new_stack(void);
+void        init_data(t_data_push *data);
 
 // exSolver
 //int     is_empty(t_stack *b);
@@ -64,6 +80,7 @@ void    sort_b(t_stack *b, t_stack *a);
 
 // Solver utils 3
 int     get_pos_data(t_node *node, int min_data);
+int     get_next_min_data(t_node *node, int min_data);
 
 //Commands
 void    sa(t_stack *a);

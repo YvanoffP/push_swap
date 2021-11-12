@@ -65,3 +65,13 @@ int list_size(t_node *current_node)
 	}
 	return (count);
 }
+
+void	init_data(t_data_push *data)
+{
+	data->data_1 = 0;
+	data->pos_1 = 0;
+	data->flag_1 = 0;
+	data->data_2 = 0;
+	data->pos_2 = 0;
+	data->flag_2 = 0;
+}
