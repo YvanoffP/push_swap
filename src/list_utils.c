@@ -66,12 +66,28 @@ int list_size(t_node *current_node)
 	return (count);
 }
 
-void	init_data(t_data_push *data)
+t_min_data	*new_min_data(int data)
 {
-	data->data_1 = 0;
-	data->pos_1 = 0;
-	data->flag_1 = 0;
-	data->data_2 = 0;
-	data->pos_2 = 0;
-	data->flag_2 = 0;
+	t_min_data *new;
+
+	new = malloc(sizeof(t_min_data));
+	new->data = data;
+	new->pos = 0;
+	new->next = NULL;
+	return (new);
+}
+
+void	add_back(t_min_data **mini, t_stack *a, int data)
+{
+	t_min_data	*new;
+	t_min_data	*tmp;
+
+	tmp = *mini;
+	new = new_min_data(data);
+	new->pos = get_pos_data(a->front, data) + 1;
+	while (tmp->next != NULL)
+	{
+		tmp = tmp->next;
+	}
+	tmp->next = new;
 }

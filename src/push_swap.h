@@ -19,15 +19,12 @@ typedef struct  s_stack
     t_node  *tail;
 }               t_stack;
 
-typedef struct  s_data_push
+typedef struct  s_min_data
 {
-    int data_1;
-    int pos_1;
-    int flag_1;
-    int data_2;
-    int pos_2;
-    int flag_2;
-}               t_data_push;
+    int         data;
+    int         pos;
+    struct s_min_data  *next;
+}               t_min_data;
 
 // Parsing
 t_stack *parsing_args(int argc, char **argv);
@@ -45,8 +42,13 @@ void        display(t_stack *a, t_stack *b);
 int         list_size(t_node *current_node);
 t_node      *new_node(int data);
 t_stack     *new_stack(void);
-void        init_data(t_data_push *data);
+//void        init_data(t_data_push *data);
 
+// TESTS
+t_min_data  *new_min_data(int data);
+void        add_back(t_min_data **mini, t_stack *a, int data);
+t_min_data  *parse_next_mins(t_stack *a, int how_many);
+void        collect_on_way(t_stack *a, t_stack *b, int how_many, t_min_data *mins);
 // exSolver
 //int     is_empty(t_stack *b);
 //int     is_sorted(t_stack *a);
@@ -76,6 +78,11 @@ void    sort_b(t_stack *b, t_stack *a);
 // Solver utils 3
 int     get_pos_data(t_node *node, int min_data);
 int     get_next_min_data(t_node *node, int min_data);
+int     get_how_many_data(t_min_data *min, int dir, int loop, int stack_half);
+
+// Solver long utils
+void    check_2_data(t_stack *a, t_stack *b);
+void    check_x_data(t_stack *a, t_stack *b);
 
 //Commands
 void    sa(t_stack *a);
