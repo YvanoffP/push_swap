@@ -55,7 +55,9 @@ void	solver_med(t_stack *a, t_stack *b)
 void	solver_long(t_stack *a, t_stack *b)
 {
 	t_data	data;
+	int		max_pos;
 
+	max_pos = 0;
 	init_data(&data, a);
 	collect(a, b, data, 1);
 	resolve_chunk(a, b);
@@ -67,7 +69,10 @@ void	solver_long(t_stack *a, t_stack *b)
 		rra(a);
 	collect(a, b, data, 3);
 	resolve_chunk(a, b);
-	while (!is_sorted(a))
+	max_pos = get_pos_data(a->front, data.max_data);
+	while (!is_sorted(a) && max_pos > data.size / 2)
+		rra(a);
+	while (!is_sorted(a) && max_pos <= data.size / 2)
 		ra(a);
 }
 
