@@ -4,7 +4,7 @@ PS_SRCS			=	$(addprefix src/, $(SRCS))
 
 SRCS			=	push_swap_parsing.c commands_1.c commands_2.c commands_3.c list_utils.c \
 					solver.c solver_utils.c solver_utils_2.c solver_utils_3.c \
-					push_swap_parsing_utils.c push_swap.c
+					push_swap_parsing_utils.c push_swap.c solver_utils_4.c list_utils_2.c
 
 HEADER_PS		=	src/push_swap.h
 

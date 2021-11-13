@@ -66,12 +66,11 @@ int list_size(t_node *current_node)
 	return (count);
 }
 
-void	init_data(t_data_push *data)
+void	init_data(t_data *data, t_stack *a)
 {
-	data->data_1 = 0;
-	data->pos_1 = 0;
-	data->flag_1 = 0;
-	data->data_2 = 0;
-	data->pos_2 = 0;
-	data->flag_2 = 0;
+	data->size = list_size(a->front);
+	data->min_data = get_min_data(a->front);
+	data->max_data = get_max_data(a->front);
+	data->median_low = get_median_data(a, data->min_data, data->max_data, (data->size / 3));
+	data->median_high = get_median_data(a, data->min_data, data->max_data, (data->size / 3) * 2);
 }

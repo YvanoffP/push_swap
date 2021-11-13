@@ -19,15 +19,22 @@ typedef struct  s_stack
     t_node  *tail;
 }               t_stack;
 
-typedef struct  s_data_push
+typedef struct  s_data
 {
-    int data_1;
-    int pos_1;
-    int flag_1;
-    int data_2;
-    int pos_2;
-    int flag_2;
-}               t_data_push;
+    int median_low;
+    int median_high;
+    int min_data;
+    int max_data;
+    int size;
+}               t_data;
+
+typedef struct  s_chunk
+{
+    int min;
+    int max;
+    int pos;
+    int size;
+}               t_chunk;
 
 // Parsing
 t_stack *parsing_args(int argc, char **argv);
@@ -40,19 +47,15 @@ int     more_than_one(t_node *check, int data, int count);
 int     check_error_args(char **argv);
 int     only_whitespace(char **argv);
 
-// List chain utils
+// List utils
 void        display(t_stack *a, t_stack *b);
 int         list_size(t_node *current_node);
 t_node      *new_node(int data);
 t_stack     *new_stack(void);
-void        init_data(t_data_push *data);
+void        init_data(t_data *data, t_stack *a);
 
-// exSolver
-//int     is_empty(t_stack *b);
-//int     is_sorted(t_stack *a);
-//int     is_rev_sorted(t_stack *b);
-//int     guit_recursive(int data, int count, t_node *current_node);
-//void    solver(t_stack *a, t_stack *b);
+// List utils 2
+void        chunk_init(t_chunk *c, t_stack *b);
 
 // Solver
 void    solver(t_stack *a, t_stack *b);
@@ -68,14 +71,21 @@ int     get_min_data(t_node *node);
 int     get_max_data(t_node *node);
 
 // Solver utils 2
-int     get_median_data(t_stack *stack, int median, int max, int nb_loop);
+int     get_median_data(t_stack *stack, int min_data, int max, int nb_loop);
 void    move_to(t_stack *a, t_stack *b, int median);
 int     guit_recursive(int data, int count, t_node *current_node);
 void    sort_b(t_stack *b, t_stack *a);
+int     get_by(t_node *node, int lower_bound, int higher_bound, int from);
 
 // Solver utils 3
 int     get_pos_data(t_node *node, int min_data);
 int     get_next_min_data(t_node *node, int min_data);
+int     smart_way(t_stack *a, t_data data, int zone, int *step);
+void    collect(t_stack *a, t_stack *b, t_data data, int zone);
+void    resolve_chunk(t_stack *a, t_stack *b);
+
+// Solver utils 4
+int     shortest_pos(t_node *node, int min, int max);
 
 //Commands
 void    sa(t_stack *a);

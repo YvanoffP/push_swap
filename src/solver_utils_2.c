@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	get_median_data(t_stack *stack, int median, int max, int nb_loop)
+int	get_median_data(t_stack *stack, int min_data, int max, int nb_loop)
 {
 	t_node	*node;
 	int		new_med;
@@ -9,7 +9,7 @@ int	get_median_data(t_stack *stack, int median, int max, int nb_loop)
 	new_med = max;
 	while (node != NULL)
 	{
-		if (node->data < max && node->data > median && node->data < new_med)
+		if (node->data < max && node->data > min_data && node->data < new_med)
 			new_med = node->data;
 		node = node->next;
 	}
@@ -78,4 +78,26 @@ int	guit_recursive(int data, int count, t_node *current_node)
 	if (data < current_node->next->data)
 			return (guit_recursive(data, count + 1, current_node->next));
 	return (count);
+}
+
+int get_by(t_node *node, int lower_bound, int higher_bound, int from)
+{
+	int i;
+
+	i = 1;
+	while (node != NULL && from == 1)
+	{
+		if (node->data >= lower_bound && node->data <= higher_bound)
+			return (i);
+		i++;
+		node = node->next;
+	}
+	while (node != NULL && from == -1)
+	{
+		if (node->data >= lower_bound && node->data <= higher_bound)
+			return (i);
+		i++;
+		node = node->prev;
+	}
+	return (0);
 }
