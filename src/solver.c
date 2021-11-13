@@ -71,6 +71,7 @@ void	solver_long(t_stack *a, t_stack *b)
 		ra(a);
 }
 
+
 void	solver(t_stack *a, t_stack *b)
 {
 	if (is_sorted(a))

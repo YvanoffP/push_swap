@@ -12,7 +12,7 @@ CC				= 	gcc $(CFLAGS)
 
 RM				= 	rm -f
 
-CFLAGS			= 	-Wall -Wextra -Werror -g
+CFLAGS			= 	-Wall -Wextra -Werror
 
 NAME			= 	push_swap
 
@@ -33,6 +33,6 @@ clean:
 
 fclean:			clean
 				$(RM) $(NAME)
-				$(RM) libft/libft.a
+				make -C $(LIBFT_DIR) fclean
 
 re:				fclean $(NAME)
