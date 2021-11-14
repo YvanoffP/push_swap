@@ -55,7 +55,7 @@ void	check_for_dup(t_stack *a)
 	if (checker != 1)
 	{
 		write(1, "Error\n", 6);
-		exit(1);
+		exit(0);
 	}
 }
 

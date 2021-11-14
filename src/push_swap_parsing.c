@@ -14,9 +14,9 @@ int	only_whitespace(char **argv)
 
 t_stack	*parsing_string(char **argv)
 {
-    t_stack *a;
-    t_node  *temp;
-    int     i;
+    t_stack	*a;
+    t_node	*temp;
+    int		i;
     char    **tmp;
 
     a = new_stack();

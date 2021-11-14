@@ -12,8 +12,6 @@ void	ra(t_stack *a)
 		a->tail = a->tail->next;
 		write(1, "ra\n", 3);
 	}
-	else
-		write(1, "Rotate a failed\n", 17);
 }
 
 void	rb(t_stack *b)
@@ -28,8 +26,6 @@ void	rb(t_stack *b)
 		b->tail = b->tail->next;
 		write(1, "rb\n", 3);
 	}
-	else
-		write(1, "Rotate b failed\n", 17);
 }
 void	rr(t_stack *a, t_stack *b)
 {
