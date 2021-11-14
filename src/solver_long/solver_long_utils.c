@@ -67,7 +67,7 @@ void	collect_long(t_stack *a, t_stack *b, t_long data, int zone)
 		if (way == 1 && step != 0)
 		{
 			while (--step)
-					ra(a);
+				ra(a);
 			pb(a, b);
 			if (list_size(b->front) >= 1 && (b->front->data == data.max || b->front->data == data.min
                     || b->front->data == data.med_1 || b->front->data == data.med_2
@@ -79,8 +79,8 @@ void	collect_long(t_stack *a, t_stack *b, t_long data, int zone)
 			while (step--)
 				rra(a);
 			pb(a, b);
-			 if (list_size(b->front) >= 1 && (b->front->data == data.max || b->front->data == data.min
-                    || b->front->data == data.med_1 || b->front->data == data.med_2
+			if (list_size(b->front) >= 1 && (b->front->data == data.max || b->front->data == data.min
+					|| b->front->data == data.med_1 || b->front->data == data.med_2
                     || b->front->data == data.med_3 || b->front->data == data.med_4))
 				rb(b);
 		}

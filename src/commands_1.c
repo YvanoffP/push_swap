@@ -14,8 +14,6 @@ void	sa(t_stack *a)
 		a->front->next->data = tmp;
 		write(1, "sa\n", 3);
 	}
-	else
-		write(1, "sa failed\n", 10);
 }
 
 void	sb(t_stack *b)
@@ -32,8 +30,6 @@ void	sb(t_stack *b)
 		b->front->next->data = tmp;
 		write(1, "sb\n", 3);
 	}
-	else
-		write(1, "sb failed\n", 10);
 }
 
 void	ss(t_stack *a, t_stack *b)
@@ -44,8 +40,6 @@ void	ss(t_stack *a, t_stack *b)
 		sa(a);
 		sb(b);
 	}
-	else
-		write(1, "Swap failed\n", 12);
 }
 
 void	pa(t_stack *b, t_stack *a)
