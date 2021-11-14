@@ -65,8 +65,8 @@ void	solver_long(t_stack *a, t_stack *b)
 		ra(a);
 	collect(a, b, data, 2);
 	resolve_chunk(a, b);
-	while (a->front->data != data.median_low)
-		rra(a);
+	while (a->tail->data != data.max_data)
+		ra(a);
 	collect(a, b, data, 3);
 	resolve_chunk(a, b);
 	max_pos = get_pos_data(a->front, data.max_data);
