@@ -98,7 +98,7 @@ void	solver_turbo_long(t_stack *a, t_stack *b)
 	collect_long(a, b, data, 4);
 	resolve_chunk(a, b);
 	while (a->tail->data != data.max)
-		ra(a);
+		rra(a);
 	collect_long(a, b, data, 5);
 	resolve_chunk(a, b);
 	max_pos = get_pos_data(a->front, data.max);
