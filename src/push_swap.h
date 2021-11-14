@@ -25,6 +25,8 @@ typedef struct  s_data
     int median_high;
     int min_data;
     int max_data;
+    int by_front;
+    int by_tail;
     int size;
 }               t_data;
 
@@ -35,6 +37,19 @@ typedef struct  s_chunk
     int pos;
     int size;
 }               t_chunk;
+
+typedef struct  s_long
+{
+    int min;
+    int max;
+    int size;
+    int med_1;
+    int med_2;
+    int med_3;
+    int med_4;
+    int by_front;
+    int by_tail;
+}               t_long;
 
 // Parsing
 t_stack *parsing_args(int argc, char **argv);
@@ -56,12 +71,14 @@ void        init_data(t_data *data, t_stack *a);
 
 // List utils 2
 void        chunk_init(t_chunk *c, t_stack *b);
+void        long_init(t_long *data, t_stack *a);
 
 // Solver
 void    solver(t_stack *a, t_stack *b);
 void    solver_short(t_stack *a);
 void    solver_med(t_stack *a, t_stack *b);
 void    solver_long(t_stack *a, t_stack *b);
+void    solver_turbo_long(t_stack *a, t_stack *b);
 
 // Solver utils
 int     is_sorted(t_stack *a);
@@ -86,6 +103,12 @@ void    resolve_chunk(t_stack *a, t_stack *b);
 
 // Solver utils 4
 int     shortest_pos(t_node *node, int min, int max);
+void    smart_way_decision(t_stack *a, t_data *data, int zone);
+
+// Solver long
+void    smart_way_decision_long(t_stack *a, t_long *data, int zone);
+void    collect_long(t_stack *a, t_stack *b, t_long data, int zone);
+int     smart_way_long(t_stack *a, t_long data, int zone, int *step);
 
 //Commands
 void    sa(t_stack *a);

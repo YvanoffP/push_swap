@@ -31,42 +31,25 @@ int	get_next_min_data(t_node *node, int min_data)
 
 int	smart_way(t_stack *a, t_data data, int zone, int *step)
 {
-	int	by_front;
-	int	by_tail;
-
-	if (zone == 3)
+	smart_way_decision(a, &data, zone);
+	if (data.by_front < data.by_tail)
 	{
-		by_front = get_by(a->front, data.min_data, data.median_low, 1);
-		by_tail = get_by(a->tail, data.min_data, data.median_low, -1);
-	}
-	if (zone == 2)
-	{
-		by_front = get_by(a->front, data.median_low, data.median_high, 1);
-		by_tail = get_by(a->tail, data.median_low, data.median_high, -1);
-	}
-	if (zone == 1)
-	{
-		by_front = get_by(a->front, data.median_high, data.max_data, 1);
-		by_tail = get_by(a->tail, data.median_high, data.max_data, -1);
-	}
-	if (by_front < by_tail)
-	{
-		*step = by_front;
+		*step = data.by_front;
 		return (1);
 	}
-	else if (by_front > by_tail)
+	else if (data.by_front > data.by_tail)
 	{
-		*step = by_tail;
+		*step = data.by_tail;
 		return (-1);
 	}
-	else if (by_front == 0 && by_front == 0)
+	else if (data.by_front == 0 && data.by_front == 0)
 	{
 		*step = 0;
 		return (0);
 	}
 	else
 	{
-		*step = by_front;
+		*step = data.by_front;
 		return (1);
 	}
 }
@@ -124,5 +107,4 @@ void    resolve_chunk(t_stack *a, t_stack *b)
 		else if (b->front->data == chunk.max)
 			pa(b, a);
 	}
-
 }
