@@ -81,26 +81,45 @@ void	collect_long(t_stack *a, t_stack *b, t_long data)
 {
 	int	way;
 	int	step;
-	int	pute;
+	int	salope;
+	int	best;
 
+	best = 0;
 	step = 0;
 	way = 1;
-	pute = data.high;
 	while (way)
 	{
 		way = smart_way_long(a, data, &step);
 		if (way == 1 && step != 0)
 		{
-			while (--step)
-				ra(a);
-			pb(a, b);
-			if (list_size(b->front) >= 1 && (b->front->data == data.high
-						|| b->front->data == pute))
+			salope = get_data_by_pos(step, a->front, way);
+			best = get_best_pos(salope, b->front, way);
+			if (step > 1)
 			{
-				if (b->front->data == pute)
-					pute = get_next_min_data(a->front, data.high);
-				rb(b);
+				if (best >= step)
+				{
+					while (step)
+					{
+						rr(a, b);
+						step--;
+					}
+				}
+				if (best < step)
+				{
+					while (best--)
+					{
+						rr(a, b);
+						step--;
+					}
+				}
 			}
+			if (step != 0)
+				while (--step)
+					ra(a);
+			pb(a, b);
+			//if (list_size(b->front) >= 1 && (b->front->data == data.high
+			//			|| b->front->data == data.low))
+			//	rb(b);
 		}
 		else if (way == -1 && step != 0)
 		{
@@ -108,12 +127,49 @@ void	collect_long(t_stack *a, t_stack *b, t_long data)
 				rra(a);
 			pb(a, b);
 			if (list_size(b->front) >= 1 && (b->front->data == data.high
-						|| b->front->data == pute))
-			{
-				if (b->front->data == pute)
-					pute = get_next_min_data(a->front, data.low);
+						|| b->front->data == data.low))
 				rb(b);
-			}
 		}
 	}
+}
+
+int	get_data_by_pos(int	pos, t_node *node, int dir)
+{
+	if (dir == 1)
+		while (pos--)
+			node = node->next;
+	else if (dir == -1)
+		while (pos--)
+			node = node->prev;
+	return (node->data);
+}
+
+int	get_best_pos(int data, t_node *node, int way)
+{
+	int	i;
+
+	i = 0;
+	if (node == NULL)
+		return (0);
+	if (way == 1)
+	{
+		while (node->next != NULL)
+		{
+			if (node->data < data && node->next->data > data)
+				return (i + 1);
+			i++;
+			node = node->next;
+		}
+	}
+	else if (way == -1)
+	{
+		while (node->prev != NULL)
+		{
+			if (node->data < data && node->prev->data > data)
+				return (i + 1);
+			i++;
+			node = node->prev;
+		}
+	}
+	return (0);
 }
