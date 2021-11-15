@@ -19,11 +19,11 @@ int	get_median_data(t_stack *stack, int min_data, int max, int nb_loop)
 		return (new_med);
 }
 
-void	move_to(t_stack	*a, t_stack *b, int median)
+void move_to(t_stack	*a, t_stack *b, int median)
 {
-	int		count;
-	int		count_lower_med;
-	int		size;
+	int	count;
+	int	count_lower_med;
+	int	size;
 
 	count = 0;
 	count_lower_med = 0;

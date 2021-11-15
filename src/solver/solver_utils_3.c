@@ -93,33 +93,33 @@ void	set_median_low(t_long *data, t_stack *a, int nb_chunk)
 
 void collect_long(t_stack *a, t_stack *b, t_long data)
 {
-        int     way;
-        int     step;
+	int     way;
+	int     step;
 
-        way = 1;
-        step = 0;
-        while (way)
-        {
-                way = smart_way_long(a, data, &step);
-                if (way == 1 && step != 0)
-                {
-                        while (--step)
-                                ra(a);
-                        pb(a, b);
-                        if (list_size(b->front) > 1 && (b->front->data == data.max || b->front->data == data.min
-                                        || b->front->data == data.low || b->front->data == data.high))
-                                rb(b);
-                }
-                else if (way == -1 && step != 0)
-                {
-                        while (step--)
-                                rra(a);
-                        pb(a, b);
-                        if (list_size(b->front) > 1 && (b->front->data == data.max || b->front->data == data.min
-                                        || b->front->data == data.low || b->front->data == data.high))
-                                rb(b);
-                }
-        }
+	way = 1;
+	step = 0;
+	while (way)
+	{
+		way = smart_way_long(a, data, &step);
+		if (way == 1 && step != 0)
+		{
+			while (--step)
+				ra(a);
+			pb(a, b);
+			if (list_size(b->front) > 1 && (b->front->data == data.max || b->front->data == data.min
+						|| b->front->data == data.low || b->front->data == data.high))
+				rb(b);
+		}
+		else if (way == -1 && step != 0)
+		{
+			while (step--)
+				rra(a);
+			pb(a, b);
+			if (list_size(b->front) > 1 && (b->front->data == data.max || b->front->data == data.min
+					|| b->front->data == data.low || b->front->data == data.high))
+				rb(b);
+		}
+	}
 }
 
 int	get_data_by_pos(int	pos, t_node *node, int dir)
@@ -131,34 +131,4 @@ int	get_data_by_pos(int	pos, t_node *node, int dir)
 		while (pos--)
 			node = node->prev;
 	return (node->data);
-}
-
-int	get_best_pos(int data, t_node *node, int way)
-{
-	int	i;
-
-	i = 0;
-	if (node == NULL)
-		return (0);
-	if (way == 1)
-	{
-		while (node->next != NULL)
-		{
-			if (node->data < data && node->next->data > data)
-				return (i + 1);
-			i++;
-			node = node->next;
-		}
-	}
-	else if (way == -1)
-	{
-		while (node->prev != NULL)
-		{
-			if (node->data < data && node->prev->data > data)
-				return (i + 1);
-			i++;
-			node = node->prev;
-		}
-	}
-	return (0);
 }

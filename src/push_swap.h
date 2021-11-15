@@ -85,8 +85,6 @@ int     get_by(t_node *node, t_long data, int from);
 // Solver utils 3
 int     get_next_min_data(t_node *node, int min_data);
 void    resolve_chunk(t_stack *a, t_stack *b);
-int     get_data_by_pos(int pos, t_node *node, int dir);
-int     get_best_pos(int data, t_node *node, int way);
 
 // Solver utils 4
 int     shortest_pos(t_node *node, int min, int max);
