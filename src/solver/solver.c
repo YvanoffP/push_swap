@@ -64,7 +64,7 @@ void	solver_long(t_stack *a, t_stack *b, int nb_chunk)
 		collect_long(a, b, data);
 		if (data.zone >= 2)
 			while (a->front->data != data.to_front)
-				rra(a);
+				ra(a);
 		resolve_chunk(a, b);
 		if (data.zone <= nb_chunk / 2)
 			while (a->tail->data != data.max)

@@ -80,7 +80,7 @@ int     get_median_data(t_stack *stack, int min_data, int max, int nb_loop);
 void    move_to(t_stack *a, t_stack *b, int median);
 int     guit_recursive(int data, int count, t_node *current_node);
 void    sort_b(t_stack *b, t_stack *a);
-int     get_by(t_node *node, int lower_bound, int higher_bound, int from);
+int     get_by(t_node *node, t_long data, int from);
 
 // Solver utils 3
 int     get_next_min_data(t_node *node, int min_data);

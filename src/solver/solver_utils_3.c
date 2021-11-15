@@ -40,8 +40,8 @@ void    resolve_chunk(t_stack *a, t_stack *b)
 
 int	smart_way_long(t_stack *a, t_long data, int *step)
 {
-	data.by_front = get_by(a->front, data.low, data.high, 1);
-	data.by_tail = get_by(a->tail, data.low, data.high, -1);
+	data.by_front = get_by(a->front, data, 1);
+	data.by_tail = get_by(a->tail, data, -1);
 	if (data.by_front < data.by_tail)
 	{
 		*step = data.by_front;

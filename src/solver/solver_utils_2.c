@@ -80,21 +80,27 @@ int	guit_recursive(int data, int count, t_node *current_node)
 	return (count);
 }
 
-int get_by(t_node *node, int lower_bound, int higher_bound, int from)
+int get_by(t_node *node, t_long data, int from)
 {
 	int i;
 
 	i = 1;
 	while (node != NULL && from == 1)
 	{
-		if (node->data >= lower_bound && node->data <= higher_bound)
+		if (data.low == data.min)
+			if (node->data >= data.low && node->data <= data.high)
+				return (i);
+		if (node->data > data.low && node->data <= data.high)
 			return (i);
 		i++;
 		node = node->next;
 	}
 	while (node != NULL && from == -1)
 	{
-		if (node->data >= lower_bound && node->data <= higher_bound)
+		if (data.low == data.min)
+			if (node->data >= data.low && node->data <= data.high)
+				return (i);
+		if (node->data > data.low && node->data <= data.high)
 			return (i);
 		i++;
 		node = node->prev;
