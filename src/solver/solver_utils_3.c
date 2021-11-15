@@ -18,23 +18,37 @@ void    resolve_chunk(t_stack *a, t_stack *b)
 {
 	t_chunk	chunk;
 
+	chunk_init(&chunk, b);
+	chunk.pos = shortest_pos(b->front, chunk.min, chunk.max);
 	while (!is_empty(b))
 	{
-		chunk_init(&chunk, b);
-		chunk.pos = shortest_pos(b->front, chunk.min, chunk.max);
 		if (chunk.pos <= chunk.size / 2)
 			while (b->front->data != chunk.min && b->front->data != chunk.max)
 				rb(b);
 		else if (chunk.pos > chunk.size / 2)
 			while (b->front->data != chunk.min && b->front->data != chunk.max)
 				rrb(b);
+
 		if (b->front->data == chunk.min)
 		{
 			pa(b, a);
-			ra(a);
+			if (is_empty(b))
+				break ;
+			chunk_init(&chunk, b);
+			chunk.pos = shortest_pos(b->front, chunk.min, chunk.max);
+			if (chunk.pos <= chunk.size / 2 && chunk.pos != 1)
+				rr(a, b);
+			else
+				ra(a);
 		}
 		else if (b->front->data == chunk.max)
+		{
 			pa(b, a);
+			if (is_empty(b))
+				break ;
+			chunk_init(&chunk, b);
+			chunk.pos = shortest_pos(b->front, chunk.min, chunk.max);
+		}
 	}
 }
 
@@ -77,60 +91,35 @@ void	set_median_low(t_long *data, t_stack *a, int nb_chunk)
 	data->mult -= 1;
 }
 
-void	collect_long(t_stack *a, t_stack *b, t_long data)
+void collect_long(t_stack *a, t_stack *b, t_long data)
 {
-	int	way;
-	int	step;
-	int	salope;
-	int	best;
+        int     way;
+        int     step;
 
-	best = 0;
-	step = 0;
-	way = 1;
-	while (way)
-	{
-		way = smart_way_long(a, data, &step);
-		if (way == 1 && step != 0)
-		{
-			salope = get_data_by_pos(step, a->front, way);
-			best = get_best_pos(salope, b->front, way);
-			if (step > 1)
-			{
-				if (best >= step)
-				{
-					while (step)
-					{
-						rr(a, b);
-						step--;
-					}
-				}
-				if (best < step)
-				{
-					while (best--)
-					{
-						rr(a, b);
-						step--;
-					}
-				}
-			}
-			if (step != 0)
-				while (--step)
-					ra(a);
-			pb(a, b);
-			//if (list_size(b->front) >= 1 && (b->front->data == data.high
-			//			|| b->front->data == data.low))
-			//	rb(b);
-		}
-		else if (way == -1 && step != 0)
-		{
-			while (step--)
-				rra(a);
-			pb(a, b);
-			if (list_size(b->front) >= 1 && (b->front->data == data.high
-						|| b->front->data == data.low))
-				rb(b);
-		}
-	}
+        way = 1;
+        step = 0;
+        while (way)
+        {
+                way = smart_way_long(a, data, &step);
+                if (way == 1 && step != 0)
+                {
+                        while (--step)
+                                ra(a);
+                        pb(a, b);
+                        if (list_size(b->front) > 1 && (b->front->data == data.max || b->front->data == data.min
+                                        || b->front->data == data.low || b->front->data == data.high))
+                                rb(b);
+                }
+                else if (way == -1 && step != 0)
+                {
+                        while (step--)
+                                rra(a);
+                        pb(a, b);
+                        if (list_size(b->front) > 1 && (b->front->data == data.max || b->front->data == data.min
+                                        || b->front->data == data.low || b->front->data == data.high))
+                                rb(b);
+                }
+        }
 }
 
 int	get_data_by_pos(int	pos, t_node *node, int dir)
