@@ -81,9 +81,11 @@ void	collect_long(t_stack *a, t_stack *b, t_long data)
 {
 	int	way;
 	int	step;
+	int	pute;
 
 	step = 0;
 	way = 1;
+	pute = data.high;
 	while (way)
 	{
 		way = smart_way_long(a, data, &step);
@@ -93,8 +95,12 @@ void	collect_long(t_stack *a, t_stack *b, t_long data)
 				ra(a);
 			pb(a, b);
 			if (list_size(b->front) >= 1 && (b->front->data == data.high
-						|| b->front->data == data.low))
+						|| b->front->data == pute))
+			{
+				if (b->front->data == pute)
+					pute = get_next_min_data(a->front, data.high);
 				rb(b);
+			}
 		}
 		else if (way == -1 && step != 0)
 		{
@@ -102,8 +108,12 @@ void	collect_long(t_stack *a, t_stack *b, t_long data)
 				rra(a);
 			pb(a, b);
 			if (list_size(b->front) >= 1 && (b->front->data == data.high
-						|| b->front->data == data.low))
+						|| b->front->data == pute))
+			{
+				if (b->front->data == pute)
+					pute = get_next_min_data(a->front, data.low);
 				rb(b);
+			}
 		}
 	}
 }
