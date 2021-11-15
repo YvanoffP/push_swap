@@ -69,7 +69,7 @@ void	solver_long(t_stack *a, t_stack *b, int nb_chunk)
 		if (data.zone <= nb_chunk / 2)
 			while (a->tail->data != data.max)
 				ra(a);
-		else if (data.zone >= nb_chunk / 2)
+		else if (data.zone > nb_chunk / 2)
 			while (a->tail->data != data.max)
 				rra(a);
 		data.high = data.low;
@@ -98,5 +98,5 @@ void	solver(t_stack *a, t_stack *b)
 	else if (list_size(a->front) <= 100)
 		solver_long(a, b, 4);
 	else if (list_size(a->front) > 100)
-		solver_long(a, b, 10);
+		solver_long(a, b, 8);
 }
