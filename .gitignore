@@ -55,3 +55,6 @@ dkms.conf
 push_swap
 push_swap_tester/
 log_error/
+gen.log
+checker_linux
+checker
