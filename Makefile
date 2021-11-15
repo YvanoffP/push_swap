@@ -2,10 +2,11 @@ LIBFT_DIR		=	libft/
 
 PS_SRCS			=	$(addprefix src/, $(SRCS))
 
-SRCS			=	push_swap_parsing.c commands_1.c commands_2.c commands_3.c list_utils.c \
-					solver.c solver_utils.c solver_utils_2.c solver_utils_3.c \
-					push_swap_parsing_utils.c push_swap.c solver_utils_4.c list_utils_2.c \
-					solver_long/solver_long_utils.c
+SRCS			=	parsing/push_swap_parsing.c parsing/push_swap_parsing_utils.c \
+					commands/commands_1.c commands/commands_2.c commands/commands_3.c \
+					list_utils/list_utils.c list_utils/list_utils_2.c \
+					solver/solver.c solver/solver_utils.c solver/solver_utils_2.c solver/solver_utils_3.c \
+					solver/solver_utils_4.c push_swap.c
 
 HEADER_PS		=	src/push_swap.h
 

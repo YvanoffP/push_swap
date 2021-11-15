@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	display(t_stack *a, t_stack *b)
 {
@@ -64,15 +64,4 @@ int list_size(t_node *current_node)
 		current_node = current_node->next;
 	}
 	return (count);
-}
-
-void	init_data(t_data *data, t_stack *a)
-{
-	data->size = list_size(a->front);
-	data->min_data = get_min_data(a->front);
-	data->max_data = get_max_data(a->front);
-	data->median_low = get_median_data(a, data->min_data, data->max_data, (data->size / 3));
-	data->median_high = get_median_data(a, data->min_data, data->max_data, (data->size / 3) * 2);
-	data->by_front = 0;
-	data->by_tail = 0;
 }

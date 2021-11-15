@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	get_median_data(t_stack *stack, int min_data, int max, int nb_loop)
 {
