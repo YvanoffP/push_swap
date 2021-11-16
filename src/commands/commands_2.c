@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   commands_2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/16 16:05:21 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/11/16 16:05:29 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 void	ra(t_stack *a)
@@ -27,6 +39,7 @@ void	rb(t_stack *b)
 		write(1, "rb\n", 3);
 	}
 }
+
 void	rr(t_stack *a, t_stack *b)
 {
 	if (b->front->data != b->tail->data && b->front != NULL && b->tail != NULL)

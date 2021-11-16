@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solver_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/16 17:35:26 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/11/16 17:36:37 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-int     is_sorted(t_stack *a)
+int	is_sorted(t_stack *a)
 {
-	t_node  *check;
+	t_node	*check;
 
 	check = a->front;
 	if (a->front == NULL || a->tail == NULL)
@@ -19,7 +31,7 @@ int     is_sorted(t_stack *a)
 
 int	is_rev_sorted(t_stack *b)
 {
-	t_node  *check;
+	t_node	*check;
 
 	check = b->front;
 	if (b->front == NULL || b->tail == NULL)
@@ -34,16 +46,16 @@ int	is_rev_sorted(t_stack *b)
 	return (1);
 }
 
-int     is_empty(t_stack *b)
+int	is_empty(t_stack *b)
 {
-    if (b->front == NULL && b->tail == NULL)
+	if (b->front == NULL && b->tail == NULL)
 		return (1);
-    return (0);
+	return (0);
 }
 
-int get_min_data(t_node *node)
+int	get_min_data(t_node *node)
 {
-	int min_data;
+	int	min_data;
 
 	min_data = node->data;
 	while (node != NULL)
@@ -55,9 +67,9 @@ int get_min_data(t_node *node)
 	return (min_data);
 }
 
-int get_max_data(t_node *node)
+int	get_max_data(t_node *node)
 {
-	int max_data;
+	int	max_data;
 
 	max_data = node->data;
 	while (node != NULL)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   commands_3.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/16 16:05:49 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/11/16 16:06:37 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 void	rra(t_stack *a)
@@ -27,7 +39,8 @@ void	rrb(t_stack *b)
 		write(1, "rrb\n", 4);
 	}
 }
-void    rrr(t_stack *a, t_stack *b)
+
+void	rrr(t_stack *a, t_stack *b)
 {
 	if (b->front != b->tail && b->front != NULL && b->tail != NULL)
 	{
@@ -50,8 +63,16 @@ void    rrr(t_stack *a, t_stack *b)
 	write(1, "rrr\n", 4);
 }
 
-void    set_front_tail(t_stack *nullme)
+void	set_front_tail(t_stack *nullme)
 {
 	nullme->front = NULL;
 	nullme->tail = NULL;
+}
+
+void	push_shortener(t_stack *a, t_stack *b)
+{
+	a->front->prev = b->front;
+	b->front->next = a->front;
+	a->front = a->front->prev;
+	set_front_tail(b);
 }

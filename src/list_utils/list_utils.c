@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/16 16:07:09 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/11/16 16:09:05 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-void	display(t_stack *a, t_stack *b)
+/*void	display(t_stack *a, t_stack *b)
 {
 	char	*stack_a;
 	char	*stack_b;
@@ -28,7 +40,7 @@ void	display(t_stack *a, t_stack *b)
 		printf("XXXXXXX ||| %7i\n", node_b->data);
 		node_b = node_b->next;
 	}
-}
+}*/
 
 t_node	*new_node(int data)
 {
@@ -53,9 +65,9 @@ t_stack	*new_stack(void)
 	return (new);
 }
 
-int list_size(t_node *current_node)
+int	list_size(t_node *current_node)
 {
-	int     count;
+	int	count;
 
 	count = 0;
 	while (current_node != NULL)

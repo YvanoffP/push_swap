@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solver_utils_2.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/16 17:36:49 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/11/16 17:38:05 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 int	get_median_data(t_stack *stack, int min_data, int max, int nb_loop)
@@ -19,7 +31,7 @@ int	get_median_data(t_stack *stack, int min_data, int max, int nb_loop)
 		return (new_med);
 }
 
-void move_to(t_stack	*a, t_stack *b, int median)
+void	move_to(t_stack *a, t_stack *b, int median)
 {
 	int	count;
 	int	count_lower_med;
@@ -44,8 +56,8 @@ void move_to(t_stack	*a, t_stack *b, int median)
 
 void	sort_b(t_stack *b, t_stack *a)
 {
-	int search_pos;
-	int count;
+	int	search_pos;
+	int	count;
 
 	if (b->front != NULL && b->tail != NULL)
 	{
@@ -76,13 +88,13 @@ int	guit_recursive(int data, int count, t_node *current_node)
 	if (current_node->next == NULL)
 		return (count);
 	if (data < current_node->next->data)
-			return (guit_recursive(data, count + 1, current_node->next));
+		return (guit_recursive(data, count + 1, current_node->next));
 	return (count);
 }
 
-int get_by(t_node *node, t_long data, int from)
+int	get_by(t_node *node, t_long data, int from)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	while (node != NULL && from == 1)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solver_utils_4.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/16 17:39:05 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/11/16 17:47:27 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 int	shortest_pos(t_node *node, int min, int max)
@@ -24,11 +36,12 @@ void	set_median_low(t_long *data, t_stack *a, int nb_chunk)
 		data->low = data->min;
 		return ;
 	}
-	data->low = get_median_data(a, data->min, data->max, (data->size / nb_chunk) * data->mult);
+	data->low = get_median_data(a, data->min, data->max,
+			(data->size / nb_chunk) * data->mult);
 	data->mult -= 1;
 }
 
-void collect_long(t_stack *a, t_stack *b, t_long data)
+void	collect_long(t_stack *a, t_stack *b, t_long data)
 {
 	int	step;
 
@@ -42,8 +55,7 @@ void collect_long(t_stack *a, t_stack *b, t_long data)
 			while (--step)
 				ra(a);
 			pb(a, b);
-			if (list_size(b->front) > 1 && (b->front->data == data.max || b->front->data == data.min
-						|| b->front->data == data.low || b->front->data == data.high))
+			if (collect_long_decision(b, data))
 				rb(b);
 		}
 		else if (data.way == -1 && step != 0)
@@ -51,9 +63,17 @@ void collect_long(t_stack *a, t_stack *b, t_long data)
 			while (step--)
 				rra(a);
 			pb(a, b);
-			if (list_size(b->front) > 1 && (b->front->data == data.max || b->front->data == data.min
-					|| b->front->data == data.low || b->front->data == data.high))
+			if (collect_long_decision(b, data))
 				rb(b);
 		}
 	}
+}
+
+int	collect_long_decision(t_stack *b, t_long data)
+{
+	if (list_size(b->front) > 1 && (b->front->data == data.max
+			|| b->front->data == data.min || b->front->data == data.low
+			|| b->front->data == data.high))
+		return (1);
+	return (0);
 }

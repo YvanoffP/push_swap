@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_parsing_utils.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/16 16:17:09 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/11/16 16:17:12 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 int	check_error_args(char **argv)
@@ -29,7 +41,7 @@ int	check_error_args(char **argv)
 	return (1);
 }
 
-int more_than_one(t_node *check, int data, int count)
+int	more_than_one(t_node *check, int data, int count)
 {
 	if (check->data == data && check->next != NULL)
 		return (more_than_one(check->next, data, count + 1));
@@ -42,8 +54,8 @@ int more_than_one(t_node *check, int data, int count)
 
 void	check_for_dup(t_stack *a)
 {
-	int     checker;
-	t_node  *current_node;
+	int		checker;
+	t_node	*current_node;
 
 	current_node = a->front;
 	checker = more_than_one(current_node, current_node->data, 0);
@@ -61,20 +73,20 @@ void	check_for_dup(t_stack *a)
 
 void	clear(char **array)
 {
-	int     i;
+	int	i;
 
 	i = 0;
 	while (array[i])
 	{
-			free(array[i]);
-			i++;
+		free(array[i]);
+		i++;
 	}
 	free(array);
 }
 
-int nb_args(char **arg)
+int	nb_args(char **arg)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arg[i])

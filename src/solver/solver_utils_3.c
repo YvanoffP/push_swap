@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solver_utils_3.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/16 17:38:10 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/11/16 17:38:57 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 int	get_next_min_data(t_node *node, int min_data)
 {
-	int     next_min_data;
+	int	next_min_data;
 
 	next_min_data = 2147483647;
 	while (node != NULL)
@@ -16,12 +28,12 @@ int	get_next_min_data(t_node *node, int min_data)
 
 void	chunk_side_move(t_stack *b, t_chunk chunk)
 {
-		if (chunk.pos <= chunk.size / 2)
-			while (b->front->data != chunk.min && b->front->data != chunk.max)
-				rb(b);
-		else if (chunk.pos > chunk.size / 2)
-			while (b->front->data != chunk.min && b->front->data != chunk.max)
-				rrb(b);
+	if (chunk.pos <= chunk.size / 2)
+		while (b->front->data != chunk.min && b->front->data != chunk.max)
+			rb(b);
+	else if (chunk.pos > chunk.size / 2)
+		while (b->front->data != chunk.min && b->front->data != chunk.max)
+			rrb(b);
 }
 
 void	rr_decision(t_stack *a, t_stack *b, t_chunk chunk)
@@ -32,7 +44,7 @@ void	rr_decision(t_stack *a, t_stack *b, t_chunk chunk)
 		ra(a);
 }
 
-void    resolve_chunk(t_stack *a, t_stack *b)
+void	resolve_chunk(t_stack *a, t_stack *b)
 {
 	t_chunk	chunk;
 

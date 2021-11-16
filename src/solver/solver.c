@@ -1,38 +1,55 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solver.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/16 15:56:40 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/11/16 17:59:17 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-void	func_shortener(t_stack *a)
+void	func_shortener(t_stack *a, int flag)
 {
+	if (flag == 1)
+	{
 		ra(a);
 		sa(a);
 		rra(a);
+	}
+	if (flag == 0)
+	{
+		sa(a);
+		rra(a);
+	}
 }
 
-void    solver_short(t_stack *a)
+void	solver_short(t_stack *a)
 {
 	if (list_size(a->front) == 2 && !is_sorted(a))
 		sa(a);
 	else if (list_size(a->front) == 3 && !is_sorted(a))
 	{
 		if (is_rev_sorted(a))
-		{
-			sa(a);
-			rra(a);
-		}
-		else if (a->front->data > a->front->next->data &&
-					a->front->data > a->tail->data)
+			func_shortener(a, 0);
+		else if (a->front->data > a->front->next->data
+			&& a->front->data > a->tail->data)
 		{
 			ra(a);
 			if (!is_sorted(a))
 				sa(a);
 		}
-		else if (a->front->data < a->front->next->data &&
-					a->front->data < a->tail->data)
-			func_shortener(a);
-		else if (a->front->data > a->front->next->data &&
-					a->front->data < a->tail->data)
+		else if (a->front->data < a->front->next->data
+			&& a->front->data < a->tail->data)
+			func_shortener(a, 1);
+		else if (a->front->data > a->front->next->data
+			&& a->front->data < a->tail->data)
 			sa(a);
-		else if (a->front->data < a->front->next->data &&
-					a->front->data > a->tail->data)
+		else if (a->front->data < a->front->next->data
+			&& a->front->data > a->tail->data)
 			rra(a);
 	}
 }
@@ -61,7 +78,7 @@ void	solver_long(t_stack *a, t_stack *b, int nb_chunk)
 
 	long_init(&data, a, nb_chunk);
 	data.high = data.max;
-	while(data.zone++ < nb_chunk)
+	while (data.zone++ < nb_chunk)
 	{
 		set_median_low(&data, a, nb_chunk);
 		collect_long(a, b, data);

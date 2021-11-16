@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_parsing.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/16 16:13:18 by ypetruzz          #+#    #+#             */
+/*   Updated: 2021/11/16 16:15:41 by ypetruzz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 int	only_whitespace(char **argv)
@@ -14,15 +26,15 @@ int	only_whitespace(char **argv)
 
 t_stack	*parsing_string(char **argv)
 {
-    t_stack	*a;
-    t_node	*temp;
-    int		i;
-    char    **tmp;
+	t_stack		*a;
+	t_node		*temp;
+	int			i;
+	char		**tmp;
 
-    a = new_stack();
-    tmp = ft_split(argv[1], ' ');
-    i = nb_args(tmp);
-    if (!tmp)
+	a = new_stack();
+	tmp = ft_split(argv[1], ' ');
+	i = nb_args(tmp);
+	if (!tmp)
 		return (0);
 	while (i >= 0)
 	{
@@ -43,11 +55,11 @@ t_stack	*parsing_string(char **argv)
 
 t_stack	*parsing_multi_args(char **argv)
 {
-	t_stack *a;
-	t_node  *temp;
-	int     i;
+	t_stack	*a;
+	t_node	*temp;
+	int		i;
 
-    a = new_stack();
+	a = new_stack();
 	i = 1;
 	while (argv[i])
 		i++;
