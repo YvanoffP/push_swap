@@ -14,6 +14,24 @@ int	get_next_min_data(t_node *node, int min_data)
 	return (next_min_data);
 }
 
+void	chunk_side_move(t_stack *b, t_chunk chunk)
+{
+		if (chunk.pos <= chunk.size / 2)
+			while (b->front->data != chunk.min && b->front->data != chunk.max)
+				rb(b);
+		else if (chunk.pos > chunk.size / 2)
+			while (b->front->data != chunk.min && b->front->data != chunk.max)
+				rrb(b);
+}
+
+void	rr_decision(t_stack *a, t_stack *b, t_chunk chunk)
+{
+	if (chunk.pos <= chunk.size / 2 && chunk.pos != 1)
+		rr(a, b);
+	else
+		ra(a);
+}
+
 void    resolve_chunk(t_stack *a, t_stack *b)
 {
 	t_chunk	chunk;
@@ -22,13 +40,7 @@ void    resolve_chunk(t_stack *a, t_stack *b)
 	chunk.pos = shortest_pos(b->front, chunk.min, chunk.max);
 	while (!is_empty(b))
 	{
-		if (chunk.pos <= chunk.size / 2)
-			while (b->front->data != chunk.min && b->front->data != chunk.max)
-				rb(b);
-		else if (chunk.pos > chunk.size / 2)
-			while (b->front->data != chunk.min && b->front->data != chunk.max)
-				rrb(b);
-
+		chunk_side_move(b, chunk);
 		if (b->front->data == chunk.min)
 		{
 			pa(b, a);
@@ -36,10 +48,7 @@ void    resolve_chunk(t_stack *a, t_stack *b)
 				break ;
 			chunk_init(&chunk, b);
 			chunk.pos = shortest_pos(b->front, chunk.min, chunk.max);
-			if (chunk.pos <= chunk.size / 2 && chunk.pos != 1)
-				rr(a, b);
-			else
-				ra(a);
+			rr_decision(a, b, chunk);
 		}
 		else if (b->front->data == chunk.max)
 		{
@@ -76,59 +85,4 @@ int	smart_way_long(t_stack *a, t_long data, int *step)
 		*step = data.by_front;
 		return (1);
 	}
-}
-
-void	set_median_low(t_long *data, t_stack *a, int nb_chunk)
-{
-	if (data->high != data->max)
-		data->to_front = get_next_min_data(a->front, data->high);
-	if (data->mult == 0)
-	{
-		data->low = data->min;
-		return ;
-	}
-	data->low = get_median_data(a, data->min, data->max, (data->size / nb_chunk) * data->mult);
-	data->mult -= 1;
-}
-
-void collect_long(t_stack *a, t_stack *b, t_long data)
-{
-	int     way;
-	int     step;
-
-	way = 1;
-	step = 0;
-	while (way)
-	{
-		way = smart_way_long(a, data, &step);
-		if (way == 1 && step != 0)
-		{
-			while (--step)
-				ra(a);
-			pb(a, b);
-			if (list_size(b->front) > 1 && (b->front->data == data.max || b->front->data == data.min
-						|| b->front->data == data.low || b->front->data == data.high))
-				rb(b);
-		}
-		else if (way == -1 && step != 0)
-		{
-			while (step--)
-				rra(a);
-			pb(a, b);
-			if (list_size(b->front) > 1 && (b->front->data == data.max || b->front->data == data.min
-					|| b->front->data == data.low || b->front->data == data.high))
-				rb(b);
-		}
-	}
-}
-
-int	get_data_by_pos(int	pos, t_node *node, int dir)
-{
-	if (dir == 1)
-		while (pos--)
-			node = node->next;
-	else if (dir == -1)
-		while (pos--)
-			node = node->prev;
-	return (node->data);
 }

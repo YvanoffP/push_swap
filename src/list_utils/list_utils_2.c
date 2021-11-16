@@ -20,4 +20,5 @@ void	long_init(t_long *data, t_stack *a, int nb_chunk)
 	data->mult = nb_chunk - 1;
 	data->zone = 0;
 	data->to_front = 0;
+	data->way = 0;
 }

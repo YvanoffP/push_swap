@@ -39,6 +39,7 @@ typedef struct  s_long
     int mult;
     int zone;
     int to_front;
+    int way;
 }               t_long;
 
 // Parsing
@@ -85,15 +86,17 @@ int     get_by(t_node *node, t_long data, int from);
 
 // Solver utils 3
 int     get_next_min_data(t_node *node, int min_data);
+void    rr_decision(t_stack *a, t_stack *b, t_chunk chunk);
+void    chunk_side_move(t_stack *b, t_chunk data);
 void    resolve_chunk(t_stack *a, t_stack *b);
+int     smart_way_long(t_stack *a, t_long data, int *step);
 
 // Solver utils 4
 int     shortest_pos(t_node *node, int min, int max);
+void    set_median_low(t_long *data, t_stack *a, int nb_chunk);
+void    collect_long(t_stack *a, t_stack *b, t_long data);
 
 // Solver long
-void    collect_long(t_stack *a, t_stack *b, t_long data);
-void    set_median_low(t_long *data, t_stack *a, int nb_chunk);
-int     smart_way_long(t_stack *a, t_long data, int *step);
 
 //Commands
 void    sa(t_stack *a);
