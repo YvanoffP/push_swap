@@ -8,7 +8,7 @@ SRCS			=	parsing/push_swap_parsing.c parsing/push_swap_parsing_utils.c \
 					solver/solver.c solver/solver_utils.c solver/solver_utils_2.c solver/solver_utils_3.c \
 					solver/solver_utils_4.c push_swap.c
 
-HEADER_PS		=	src/push_swap.h
+HEADER_PS		=	src/
 
 CC				= 	gcc $(CFLAGS)
 

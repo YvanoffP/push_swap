@@ -34,3 +34,31 @@ void	long_init(t_long *data, t_stack *a, int nb_chunk)
 	data->to_front = 0;
 	data->way = 0;
 }
+
+void	free_elements(t_stack *a, t_stack *b)
+{
+	t_node	*node;
+
+	if (a->front != NULL)
+	{
+		while (a->front->next != NULL)
+		{
+			node = a->front;
+			a->front = a->front->next;
+			free(node);
+		}
+		free(a->front);
+	}
+	if (b->front != NULL)
+	{
+		while (b->front->next != NULL)
+		{
+			node = b->front;
+			b->front = b->front->next;
+			free(node);
+		}
+		free(b->front);
+	}
+	free(a);
+	free(b);
+}

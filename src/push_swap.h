@@ -74,6 +74,7 @@ t_stack	*new_stack(void);
 // List utils 2
 void	chunk_init(t_chunk *c, t_stack *b);
 void	long_init(t_long *data, t_stack *a, int nb_chunk);
+void	free_elements(t_stack *a, t_stack *b);
 
 // Solver
 void	solver(t_stack *a, t_stack *b);
