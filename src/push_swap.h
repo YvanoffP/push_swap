@@ -8,9 +8,9 @@
 
 typedef struct  s_node
 {
-        int             data;
-        struct s_node   *prev;
-        struct s_node   *next;
+    int             data;
+    struct s_node   *prev;
+    struct s_node   *next;
 }               t_node;
 
 typedef struct  s_stack
@@ -54,14 +54,14 @@ int     check_error_args(char **argv);
 int     only_whitespace(char **argv);
 
 // List utils
-void        display(t_stack *a, t_stack *b);
-int         list_size(t_node *current_node);
-t_node      *new_node(int data);
-t_stack     *new_stack(void);
+void    display(t_stack *a, t_stack *b);
+int     list_size(t_node *current_node);
+t_node  *new_node(int data);
+t_stack *new_stack(void);
 
 // List utils 2
-void        chunk_init(t_chunk *c, t_stack *b);
-void        long_init(t_long *data, t_stack *a, int nb_chunk);
+void    chunk_init(t_chunk *c, t_stack *b);
+void    long_init(t_long *data, t_stack *a, int nb_chunk);
 
 // Solver
 void    solver(t_stack *a, t_stack *b);
@@ -95,8 +95,6 @@ int     smart_way_long(t_stack *a, t_long data, int *step);
 int     shortest_pos(t_node *node, int min, int max);
 void    set_median_low(t_long *data, t_stack *a, int nb_chunk);
 void    collect_long(t_stack *a, t_stack *b, t_long data);
-
-// Solver long
 
 //Commands
 void    sa(t_stack *a);
