@@ -67,6 +67,7 @@ void    solver(t_stack *a, t_stack *b);
 void    solver_short(t_stack *a);
 void    solver_med(t_stack *a, t_stack *b);
 void    solver_long(t_stack *a, t_stack *b, int nb_chunk);
+void	func_shortener(t_stack *a);
 
 // Solver utils
 int     is_sorted(t_stack *a);

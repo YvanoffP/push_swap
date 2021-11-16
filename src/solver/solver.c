@@ -1,5 +1,12 @@
 #include "../push_swap.h"
 
+void	func_shortener(t_stack *a)
+{
+		ra(a);
+		sa(a);
+		rra(a);
+}
+
 void    solver_short(t_stack *a)
 {
 	if (list_size(a->front) == 2 && !is_sorted(a))
@@ -20,11 +27,7 @@ void    solver_short(t_stack *a)
 		}
 		else if (a->front->data < a->front->next->data &&
 					a->front->data < a->tail->data)
-		{
-			ra(a);
-			sa(a);
-			rra(a);
-		}
+			func_shortener(a);
 		else if (a->front->data > a->front->next->data &&
 					a->front->data < a->tail->data)
 			sa(a);
