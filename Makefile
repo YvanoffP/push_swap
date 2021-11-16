@@ -22,7 +22,7 @@ NAME			= 	push_swap
 
 all:			$(NAME)
 
-$(NAME):		libft $(OBJS_PRINT)
+$(NAME):		libft
 				$(CC) $(PS_SRCS) -I $(HEADER_PS) $(LIBFT_DIR)libft.a -o $(NAME)
 				@echo "push_swap has been compiled !"
 

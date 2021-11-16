@@ -6,7 +6,7 @@
 /*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 19:24:09 by ypetruzz          #+#    #+#             */
-/*   Updated: 2021/10/12 22:20:35 by ypetruzz         ###   ########.fr       */
+/*   Updated: 2021/11/16 18:40:45 by ypetruzz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static int	ft_iswspace(char c)
 		return (0);
 }
 
-static void fatal_error(void)
+static void	fatal_error(void)
 {
-	write(1,"Error\n", 6);
+	write(1, "Error\n", 6);
 	exit(0);
 }
 
