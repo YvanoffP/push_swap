@@ -1,40 +1,52 @@
-LIBFT_DIR		=	libft/
+CC					= gcc
+FLAGS				= -Wall -Wextra -Werror
+LIBFT_PATH			= ./libft
+INCL				= ./src
 
-PS_SRCS			=	$(addprefix src/, $(SRCS))
+CFLAGS				= $(FLAGS) -I$(LIBFT_PATH)/ -I$(INCL)/
 
-SRCS			=	parsing/push_swap_parsing.c parsing/push_swap_parsing_utils.c \
-					commands/commands_1.c commands/commands_2.c commands/commands_3.c \
-					list_utils/list_utils.c list_utils/list_utils_2.c \
-					solver/solver.c solver/solver_utils.c solver/solver_utils_2.c solver/solver_utils_3.c \
-					solver/solver_utils_4.c push_swap.c
+LINKS				= -L $(LIBFT_PATH) -lft
 
-HEADER_PS		=	src/
+NAME				= push_swap
 
-CC				= 	gcc $(CFLAGS)
+SRCS_PATH		   	= src/
 
-RM				= 	rm -f
+MAIN				= push_swap.c
 
-CFLAGS			= 	-Wall -Wextra -Werror
+CMD					= commands_1.c commands_2.c commands_3.c
 
-NAME			= 	push_swap
+SOLVER				= solver.c solver_utils.c solver_utils_2.c solver_utils_3.c solver_utils_4.c
 
-.PHONY:			libft all clean fclean re bonus
+LIST_UTILS			= list_utils.c list_utils_2.c
 
-all:			$(NAME)
+PARS				= push_swap_parsing_utils.c push_swap_parsing.c
 
-$(NAME):		libft
-				$(CC) $(PS_SRCS) -I $(HEADER_PS) $(LIBFT_DIR)libft.a -o $(NAME)
-				@echo "push_swap has been compiled !"
+SRCS				= $(addprefix $(SRCS_PATH), $(MAIN)) \
+				 	 $(addprefix $(SRCS_PATH)commands/, $(CMD)) \
+				 	 $(addprefix $(SRCS_PATH)list_utils/, $(LIST_UTILS)) \
+				 	 $(addprefix $(SRCS_PATH)parsing/, $(PARS)) \
+				 	 $(addprefix $(SRCS_PATH)solver/, $(SOLVER))
 
-libft:
-				make -C $(LIBFT_DIR) all
+OBJS_PSWAP	  		= $(SRCS:.c=.o)
+
+
+all:				$(NAME)
+
+$(OBJS_PSWAP): %.o: %.c
+					$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME) :	   		$(OBJS_PSWAP)
+					make -C $(LIBFT_PATH)
+					$(CC) -o $(NAME) $(OBJS_PSWAP) $(LINKS)
 
 clean:
-				$(RM) $(NAME)
-				make -C $(LIBFT_DIR) clean
+					rm -rf $(SRCS:.c=.o)
+					make -C $(LIBFT_PATH) clean
 
-fclean:			clean
-				$(RM) $(NAME)
-				make -C $(LIBFT_DIR) fclean
+fclean: 			clean
+					rm -rf $(LIBFT_PATH)libft.a
+					rm -rf $(NAME)
 
-re:				fclean $(NAME)
+re:	 				fclean all
+
+.PHONY : all re clean fclean

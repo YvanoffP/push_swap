@@ -58,3 +58,4 @@ log_error/
 gen.log
 checker_linux
 checker
+obj/
