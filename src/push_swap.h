@@ -109,6 +109,7 @@ int		shortest_pos(t_node *node, int min, int max);
 void	set_median_low(t_long *data, t_stack *a, int nb_chunk);
 void	collect_long(t_stack *a, t_stack *b, t_long data);
 int		collect_long_decision(t_stack *b, t_long data);
+int     determine_chunk(t_stack *a);
 
 //Commands
 void	sa(t_stack *a);

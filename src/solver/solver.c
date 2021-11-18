@@ -115,8 +115,6 @@ void	solver(t_stack *a, t_stack *b)
 		solver_short(a);
 	else if (list_size(a->front) <= 6)
 		solver_med(a, b);
-	else if (list_size(a->front) <= 100)
-		solver_long(a, b, 4);
-	else if (list_size(a->front) > 100)
-		solver_long(a, b, 8);
+	else if (list_size(a->front) > 6)
+		solver_long(a, b, determine_chunk(a));
 }
