@@ -6,7 +6,7 @@
 /*   By: ypetruzz <marvin@42lausanne.ch>			+#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2021/11/16 17:46:44 by ypetruzz		  #+#	#+#			 */
-/*   Updated: 2021/11/16 17:58:30 by ypetruzz         ###   ########.fr       */
+/*   Updated: 2021/11/19 15:00:42 by ypetruzz         ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int		shortest_pos(t_node *node, int min, int max);
 void	set_median_low(t_long *data, t_stack *a, int nb_chunk);
 void	collect_long(t_stack *a, t_stack *b, t_long data);
 int		collect_long_decision(t_stack *b, t_long data);
-int     determine_chunk(t_stack *a);
+int		determine_chunk(t_stack *a);
 
 //Commands
 void	sa(t_stack *a);

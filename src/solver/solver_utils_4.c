@@ -6,7 +6,7 @@
 /*   By: ypetruzz <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:39:05 by ypetruzz          #+#    #+#             */
-/*   Updated: 2021/11/16 17:47:27 by ypetruzz         ###   ########.fr       */
+/*   Updated: 2021/11/19 15:01:20 by ypetruzz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	determine_chunk(t_stack *a)
 		return (8);
 	else if (size <= 1000)
 		return (12);
-	else if (size >= 1000)
+	else if (size > 1000)
 		return (16);
 	exit(0);
 }
